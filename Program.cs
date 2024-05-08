@@ -43,7 +43,7 @@ class HangmanGame
             }
             else
             {
-                guessedLetters.Append(guess); // its guess guessedLetters  not containing wrong letter 
+                guessedLetters.Append(guess); // if not containing a allready guessed letter it will add it to guessedLetters stringBuilder
             }
 
             if (guess.Length == 1) // here i  check if guess contains leter it will reveal. 
