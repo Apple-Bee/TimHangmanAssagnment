@@ -4,21 +4,21 @@ using System.Text;
 class HangmanGame
 {
     private string[] words = { "apple", "banana", "orange", "grape", "kiwi" };
-    private string secretWord;
-    private char[] guessedWord;
-    private StringBuilder incorrectLetters = new StringBuilder();
+    private string secretWord;//dashed word
+    private char[] guessedWord;//word that has to be reaveld
+    private StringBuilder incorrectLetters = new StringBuilder(); //string modify 
     private int guessesLeft = 10;
-    private StringBuilder guessedLetters = new StringBuilder();
+    private StringBuilder guessedLetters = new StringBuilder(); //string modify
 
     public void StartGame()
     {
         // Select a random word from the array
         Random random = new Random();
-        secretWord = words[random.Next(words.Length)];
+        secretWord = words[random.Next(words.Length)]; //get a random index from words array and out it in the secretWord
 
         // Initialize guessed word with dashes
-        guessedWord = new char[secretWord.Length];
-        for (int i = 0; i < secretWord.Length; i++)
+        guessedWord = new char[secretWord.Length]; // SecretWord transform to dashes
+        for (int i = 0; i < secretWord.Length; i++)  
         {
             guessedWord[i] = '_';
         }
@@ -34,19 +34,19 @@ class HangmanGame
             Console.WriteLine("Incorrect guesses: " + incorrectLetters);
             Console.WriteLine("Guesses left: " + guessesLeft);
             Console.Write("Enter your guess: ");
-            string guess = Console.ReadLine().ToLower();
+            string guess = Console.ReadLine().ToLower();// input ur guess
 
-            if (guessedLetters.ToString().Contains(guess))
+            if (guessedLetters.ToString().Contains(guess))// here i store the the wrong letter and if guessedLetter in stringbuilder allready contains in the guessed letter it will tell me and just contrinue
             {
                 Console.WriteLine("You have already guessed the letter '" + guess + "'. Please try again.");
                 continue;
             }
             else
             {
-                guessedLetters.Append(guess);
+                guessedLetters.Append(guess); // its guess guessedLetters  not containing wrong letter 
             }
 
-            if (guess.Length == 1)
+            if (guess.Length == 1) // here i  check if guess contains leter it will reveal. 
             {
                 // Guess is a letter
                 if (secretWord.Contains(guess))
@@ -63,7 +63,7 @@ class HangmanGame
                 else
                 {
                     // Add incorrect guess to StringBuilder
-                    incorrectLetters.Append(guess + " ");
+                    incorrectLetters.Append(guess + " "); 
                     guessesLeft--;
                 }
             }
