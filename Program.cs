@@ -52,11 +52,11 @@ class HangmanGame
                 if (secretWord.Contains(guess))
                 {
                     // Update guessedWord with correct guesses
-                    for (int i = 0; i < secretWord.Length; i++)
+                    for (int i = 0; i < secretWord.Length; i++) //loop true the secretWord
                     {
-                        if (secretWord[i] == guess[0])
+                        if (secretWord[i] == guess[0]) //check if secretWord and guessed letter is the same
                         {
-                            guessedWord[i] = guess[0];
+                            guessedWord[i] = guess[0];//here it will transform the dashes to the letter if it is correct
                         }
                     }
                 }
