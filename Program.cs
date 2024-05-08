@@ -8,6 +8,7 @@ class HangmanGame
     private char[] guessedWord;
     private StringBuilder incorrectLetters = new StringBuilder();
     private int guessesLeft = 10;
+    private StringBuilder guessedLetters = new StringBuilder();
 
     public void StartGame()
     {
@@ -35,6 +36,15 @@ class HangmanGame
             Console.Write("Enter your guess: ");
             string guess = Console.ReadLine().ToLower();
 
+            if (guessedLetters.ToString().Contains(guess))
+            {
+                Console.WriteLine("You have already guessed the letter '" + guess + "'. Please try again.");
+                continue;
+            }
+            else
+            {
+                guessedLetters.Append(guess);
+            }
 
             if (guess.Length == 1)
             {
@@ -93,3 +103,4 @@ class Program
         hangman.StartGame();
     }
 }
+
